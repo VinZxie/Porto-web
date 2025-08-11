@@ -1,0 +1,1368 @@
+
+<!-- Di bagian Profile Section (baris 164-165) -->
+<h2>VinnZxie</h2>  <!-- Ganti nama -->
+<p>Full Stack Developer</p>  <!-- Ganti profesi -->
+
+<!-- Di bagian Navigation Menu (baris 183-231) -->
+<!-- Tambah menu baru dengan format yang sama -->
+<a href="#section-baru" class="nav-link...">
+    <i class="fas fa-icon mr-3"></i>
+    Menu Baru
+</a>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - VinnZxie</title>
+    
+    <!-- EXTERNAL LIBRARIES -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- TAILWIND CONFIGURATION -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',    // Blue - Main brand color
+                        secondary: '#1E40AF',  // Dark blue - Secondary actions
+                        accent: '#F59E0B'      // Orange - Highlights and accents
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CUSTOM CSS STYLES -->
+    <style>
+        /* ===== PROFILE ANIMATIONS ===== */
+        /* Floating animation for profile picture */
+        .profile-float {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(0.5deg); }
+            50% { transform: translateY(-12px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-0.5deg); }
+        }
+        
+        /* Glow effect for profile picture on hover */
+        .profile-glow {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #3B82F6, #1E40AF, #F59E0B, #3B82F6);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            animation: gentleGlow 6s ease-in-out infinite;
+        }
+        
+        .profile-glow:hover::before {
+            opacity: 0.3;
+        }
+        
+        @keyframes gentleGlow {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        /* ===== BACKGROUND ANIMATIONS ===== */
+        /* Animated gradient background */
+        .bg-gradient-to-br {
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* ===== FLOATING BACKGROUND ELEMENTS ===== */
+        /* Different drift animations for background decorative elements */
+        .gentle-drift-1 { animation: drift1 12s ease-in-out infinite; }
+        .gentle-drift-2 { animation: drift2 15s ease-in-out infinite; }
+        .gentle-drift-3 { animation: drift3 18s ease-in-out infinite; }
+        .gentle-drift-4 { animation: drift4 14s ease-in-out infinite; }
+        .gentle-drift-5 { animation: drift5 16s ease-in-out infinite; }
+        
+        /* Drift animation 1 - Scale and translate */
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(10px, -15px) scale(1.05); opacity: 0.4; }
+            50% { transform: translate(-5px, -25px) scale(0.95); opacity: 0.5; }
+            75% { transform: translate(-15px, -10px) scale(1.02); opacity: 0.4; }
+        }
+        
+        /* Drift animation 2 - Rotate and translate */
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+            33% { transform: translate(-20px, 10px) rotate(2deg); opacity: 0.3; }
+            66% { transform: translate(15px, -5px) rotate(-1deg); opacity: 0.4; }
+        }
+        
+        /* Drift animation 3 - Simple scale */
+        @keyframes drift3 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+            50% { transform: translate(8px, 12px) scale(1.08); opacity: 0.35; }
+        }
+        
+        /* Drift animation 4 - Rotate with translate */
+        @keyframes drift4 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(12px, -8px) rotate(1deg); opacity: 0.4; }
+            75% { transform: translate(-8px, 15px) rotate(-0.5deg); opacity: 0.35; }
+        }
+        
+        /* Drift animation 5 - Complex scale and translate */
+        @keyframes drift5 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            40% { transform: translate(-10px, -12px) scale(0.9); opacity: 0.3; }
+            80% { transform: translate(18px, 8px) scale(1.1); opacity: 0.5; }
+        }
+    </style>
+</head>
+
+<!-- ===== MAIN BODY ===== -->
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- ===== NAVIGATION CONTROLS ===== -->
+    <!-- Dark/Light Mode Toggle Button -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+        <i class="fas fa-moon dark:hidden text-lg"></i>
+        <i class="fas fa-sun hidden dark:inline text-lg"></i>
+    </button>
+
+    <!-- Mobile Menu Toggle Button (Hidden on desktop) -->
+    <button id="mobileMenuBtn" class="lg:hidden fixed top-4 left-4 z-50 bg-primary text-white p-3 rounded-lg shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- ===== SIDEBAR NAVIGATION ===== -->
+    <!-- Left sidebar with profile and navigation menu -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto">
+        <div class="p-6">
+            
+            <!-- ===== PROFILE SECTION ===== -->
+            <!-- Profile picture, name, and social links -->
+            <div class="text-center mb-8">
+                <!-- Profile Picture Container -->
+                <div class="w-24 h-24 mx-auto mb-4 relative">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/w=600/posts/images/662699211934093925/2e5373b5-1f8a-48dc-b6f3-14d6ca5ce024.jpg" 
+                        alt="Profile Picture" 
+                        class="w-full h-full rounded-full object-cover shadow-lg" 
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                </div>
+                
+                <!-- Name and Title -->
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">VinnZxie</h2>
+                <p class="text-gray-600 dark:text-gray-300">Full Stack Developer</p>
+                
+                <!-- Social Media Links -->
+                <div class="flex justify-center space-x-3 mt-4">
+                    <a href="#" class="text-primary hover:text-secondary transition-colors duration-200">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors duration-200">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors duration-200">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== NAVIGATION MENU ===== -->
+            <!-- Main navigation links to different sections -->
+            <nav class="space-y-2">
+                <!-- Home/Beranda Link -->
+                <a href="#home" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200 active">
+                    <i class="fas fa-home mr-3"></i>
+                    Beranda
+                </a>
+                
+                <!-- About/Tentang Link -->
+                <a href="#about" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-user mr-3"></i>
+                    Tentang
+                </a>
+                
+                <!-- Experience/Pengalaman Link -->
+                <a href="#experience" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-briefcase mr-3"></i>
+                    Pengalaman
+                </a>
+                
+                <!-- Skills/Keahlian Link -->
+                <a href="#skills" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-code mr-3"></i>
+                    Keahlian
+                </a>
+                
+                <!-- Projects/Proyek Link -->
+                <a href="#projects" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-folder mr-3"></i>
+                    Proyek
+                </a>
+                
+                <!-- Education/Pendidikan Link -->
+                <a href="#education" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-graduation-cap mr-3"></i>
+                    Pendidikan
+                </a>
+                
+                <!-- Testimonials/Testimoni Link -->
+                <a href="#testimonials" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-quote-left mr-3"></i>
+                    Testimoni
+                </a>
+                
+                <!-- Contact/Kontak Link -->
+                <a href="#contact" class="nav-link flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-envelope mr-3"></i>
+                    Kontak
+                </a>
+            </nav>
+        </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE OVERLAY ===== -->
+    <!-- Dark overlay when mobile menu is open -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <!-- Main content container with left margin for sidebar -->
+    <div class="lg:ml-64 min-h-screen">
+        
+        <!-- ===== HOME/HERO SECTION ===== -->
+        <!-- Landing page with profile picture, name, and introduction -->
+        <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 relative overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-primary/8 to-secondary/4 rounded-full gentle-drift-1"></div>
+                <div class="absolute top-1/4 -left-32 w-48 h-48 bg-gradient-to-tr from-accent/6 to-primary/4 rounded-full gentle-drift-2"></div>
+                <div class="absolute -bottom-32 -right-16 w-72 h-72 bg-gradient-to-tl from-secondary/6 to-accent/3 rounded-full gentle-drift-3"></div>
+                <div class="absolute bottom-1/3 -left-20 w-40 h-40 bg-gradient-to-br from-primary/4 to-secondary/6 rounded-full gentle-drift-4"></div>
+                <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-gradient-to-bl from-accent/8 to-primary/3 rounded-full gentle-drift-5"></div>
+            </div>
+            
+            <div class="text-center px-6 relative z-10">
+                <div class="mb-8">
+                    <div class="inline-block profile-float">
+                        <div class="w-32 h-32 mx-auto mb-6 relative profile-glow">
+                            <img src="https://image.tensorartassets.com/cdn-cgi/image/w=600/posts/images/662699211934093925/2e5373b5-1f8a-48dc-b6f3-14d6ca5ce024.jpg" alt="Profile Picture" class="w-full h-full rounded-full object-cover shadow-2xl" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        </div>
+                    </div>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Halo, Saya VinnZxie
+                </h1>
+                <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto">
+                    Seorang Full Stack Developer yang passionate dalam menciptakan solusi digital yang inovatif dan user-friendly
+                </p>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Sebagai siswa SMK TJKT yang passionate dalam programming, saya telah mengembangkan berbagai proyek web dan membantu UMKM lokal dalam digitalisasi bisnis mereka.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">React Developer</span>
+                    <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold">Node.js Expert</span>
+                    <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold">UI/UX Enthusiast</span>
+                </div>
+                <div class="space-x-4">
+                    <button class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        Lihat Proyek
+                    </button>
+                    <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105">
+                        Download CV
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Tentang Saya</h2>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary">Perjalanan Karir Saya</h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                            Saya memulai perjalanan sebagai developer pada tahun 2022 dengan fokus pada frontend development. 
+                            Seiring waktu, saya mengembangkan keahlian di backend dan menjadi full stack developer yang kompeten.
+                        </p>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                            Passion saya terletak pada pemecahan masalah kompleks melalui kode yang bersih dan efisien. 
+                            Saya percaya bahwa teknologi harus dapat diakses dan memberikan nilai nyata bagi pengguna.
+                        </p>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                            Selain coding, saya juga aktif dalam komunitas developer, sering berbagi pengetahuan melalui 
+                            blog teknis dan mentoring junior developer.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                                <div class="text-gray-600 dark:text-gray-300">Proyek Selesai</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">3+</div>
+                                <div class="text-gray-600 dark:text-gray-300">Tahun Pengalaman</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">47+</div>
+                                <div class="text-gray-600 dark:text-gray-300">Klien Puas</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">8+</div>
+                                <div class="text-gray-600 dark:text-gray-300">Teknologi Dikuasai</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-bold mb-6">Informasi Personal</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Nama Lengkap:</span>
+                                    <span>Alvin Nuril Iqbal</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Email:</span>
+                                    <span>alvinnuriliqbal@gmail.com</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Telepon:</span>
+                                    <span>085704359451</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Lokasi:</span>
+                                    <span>Banyuwangi, Indonesia</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Bahasa:</span>
+                                    <span>Indonesia, English</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold">Status:</span>
+                                    <span class="text-green-500 font-semibold">Tersedia untuk proyek</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white">
+                            <h3 class="text-xl font-bold mb-4">Filosofi Kerja</h3>
+                            <p class="italic">
+                                "Kode yang baik bukan hanya tentang fungsi, tetapi juga tentang keindahan, 
+                                maintainability, dan dampak positif yang dapat diberikan kepada pengguna."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 px-6 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Pengalaman Kerja</h2>
+                <div class="space-y-8">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary">Junior Full Stack Developer</h3>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">Local Web Agency Banyuwangi</p>
+                            </div>
+                            <div class="text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Sep 2023 - Sekarang
+                            </div>
+                        </div>
+                        <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                            <li>• Mengembangkan website company profile dan toko online untuk UMKM lokal</li>
+                            <li>• Membantu maintenance dan update website existing klien</li>
+                            <li>• Belajar implementasi sistem pembayaran dan integrasi API</li>
+                            <li>• Kolaborasi dengan senior developer dalam proyek-proyek besar</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary">Freelance Web Developer</h3>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">Proyek Pribadi & Klien</p>
+                            </div>
+                            <div class="text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Jan 2022 - Sekarang
+                            </div>
+                        </div>
+                        <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                            <li>• Membuat 10+ website untuk bisnis lokal dan teman-teman</li>
+                            <li>• Mengembangkan aplikasi web sederhana untuk tugas sekolah dan kompetisi</li>
+                            <li>• Belajar berbagai teknologi web modern secara otodidak</li>
+                            <li>• Membantu teman sekelas dalam proyek-proyek programming</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary">Magang IT Support</h3>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">Comunity Komunikasi & Informatika Banyuwangi</p>
+                            </div>
+                            <div class="text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Jul 2024 - Sep 2024
+                            </div>
+                        </div>
+                        <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                            <li>• Membantu maintenance jaringan komputer dan troubleshooting hardware</li>
+                            <li>• Belajar administrasi server dan database management</li>
+                            <li>• Membantu update konten website comunity </li>
+                            <li>• Mendapat pengalaman kerja di lingkungan IT profesional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Keahlian & Teknologi</h2>
+                
+                <!-- Programming Languages -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-center mb-8 text-primary">Bahasa Pemrograman</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#F7DF1E">
+                                    <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">JavaScript</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#3776AB">
+                                    <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">Python</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#777BB4">
+                                    <path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .982-.122 1.292-.391.313-.27.47-.628.47-1.074 0-.3-.093-.525-.277-.675-.184-.15-.463-.226-.864-.226v-.282zm8.456-1.283h-.838l-.516 2.648h.838c.557 0 .982-.122 1.293-.391.312-.27.47-.628.47-1.074 0-.3-.094-.525-.278-.675-.184-.15-.463-.226-.863-.226l-.106-.282zM12.001 0C5.383 0 0 5.383 0 12.001s5.383 12.001 12.001 12.001S24 18.619 24 12.001 18.617 0 12.001 0zm-3.013 16.404c-.564.564-1.395.564-1.959 0L5.383 14.758c-.564-.564-.564-1.395 0-1.959L7.029 11.153c.564-.564 1.395-.564 1.959 0l1.646 1.646c.564.564.564 1.395 0 1.959l-1.646 1.646zm8.670-8.670c-.564.564-1.395.564-1.959 0L13.053 6.088c-.564-.564-.564-1.395 0-1.959L14.699 2.483c.564-.564 1.395-.564 1.959 0l1.646 1.646c.564.564.564 1.395 0 1.959L16.658 7.734z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">PHP</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#00D8FF">
+                                    <circle cx="12" cy="12" r="2"/>
+                                    <path d="M12,1C18.5,1 24,6.5 24,12C24,17.5 18.5,23 12,23C5.5,23 0,17.5 0,12C0,6.5 5.5,1 12,1M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3Z"/>
+                                    <path d="M12,5.5C15.5,5.5 18.25,8.25 18.25,12C18.25,15.75 15.5,18.5 12,18.5C8.25,18.5 5.75,15.75 5.75,12C5.75,8.25 8.25,5.5 12,5.5M12,7.5A4.5,4.5 0 0,0 7.5,12A4.5,4.5 0 0,0 12,16.5A4.5,4.5 0 0,0 16.5,12A4.5,4.5 0 0,0 12,7.5Z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">React</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#4FC08D">
+                                    <path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">Vue.js</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center group">
+                            <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow duration-300">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#339933">
+                                    <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L2.46,6.68C2.376,6.729,2.322,6.825,2.322,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.570,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Frontend Development</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">HTML5, CSS3, JavaScript ES6+, React.js, Vue.js, Angular, Tailwind CSS, Bootstrap, SASS/SCSS</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Expert - 95%</span>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Backend Development</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Node.js, Express.js, Python, Django, FastAPI, PHP, Laravel, RESTful APIs, GraphQL</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Expert - 90%</span>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Database Management</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">MySQL, PostgreSQL, MongoDB, Redis, Firebase, Prisma ORM, Sequelize</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Advanced - 85%</span>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cloud & DevOps</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">AWS, Google Cloud, Docker, Kubernetes, CI/CD, Jenkins, GitHub Actions, Nginx</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Advanced - 80%</span>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mobile Development</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">React Native, Flutter, Progressive Web Apps, Ionic, Cordova</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate - 75%</span>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-primary text-4xl mb-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Tools & Others</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Git, GitHub, GitLab, VS Code, Figma, Postman, Webpack, Vite, Jest, Cypress</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Expert - 90%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-6 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Proyek Terbaru</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-primary to-secondary flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-shopping-cart text-white text-4xl"></i>
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-white text-sm">
+                                Featured
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Platform e-commerce lengkap dengan sistem pembayaran, manajemen inventory, dan dashboard admin yang comprehensive.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">React</span>
+                                <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">Node.js</span>
+                                <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">MongoDB</span>
+                                <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">Stripe</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-primary hover:text-secondary transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-accent to-orange-500 flex items-center justify-center">
+                            <i class="fas fa-tasks text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Aplikasi manajemen tugas dengan fitur kolaborasi tim, tracking progress, dan notifikasi real-time.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-accent/10 text-accent px-2 py-1 rounded text-sm">Vue.js</span>
+                                <span class="bg-accent/10 text-accent px-2 py-1 rounded text-sm">Python</span>
+                                <span class="bg-accent/10 text-accent px-2 py-1 rounded text-sm">PostgreSQL</span>
+                                <span class="bg-accent/10 text-accent px-2 py-1 rounded text-sm">Socket.io</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-accent hover:text-orange-500 transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Dashboard analytics real-time dengan visualisasi data yang interaktif dan laporan otomatis.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">React</span>
+                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">D3.js</span>
+                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Express</span>
+                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Redis</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-green-500 hover:text-teal-500 transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Social Media App</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Aplikasi media sosial dengan fitur posting, chat real-time, dan sistem rekomendasi konten.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">React Native</span>
+                                <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">Firebase</span>
+                                <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">Node.js</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-purple-500 hover:text-pink-500 transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Learning Management System</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Platform pembelajaran online dengan video streaming, quiz interaktif, dan tracking progress siswa.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">Next.js</span>
+                                <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">Prisma</span>
+                                <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">AWS</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-indigo-500 hover:text-blue-500 transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Healthcare Management</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Sistem manajemen rumah sakit dengan appointment booking, medical records, dan telemedicine.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">Angular</span>
+                                <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">Django</span>
+                                <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">PostgreSQL</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <a href="https://wa.me/6285704359451" class="text-red-500 hover:text-pink-500 transition-colors duration-200">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-sm">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <button class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+                        Lihat Semua Proyek
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Pendidikan & Sertifikasi</h2>
+                <div class="space-y-8">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">SMK TJKT</h3>
+                                <p class="text-lg text-gray-600 dark:text-gray-300">SMKN 1 Banyuwangi</p>
+                                <p class="text-gray-500 dark:text-gray-400">2023/2024 - 2025/2026 | Jurusan Teknik Jaringan Komputer dan Telekomunikasi</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Fokus pada Networking, Web Development, dan Database Management. Mengembangkan berbagai proyek aplikasi web selama masa sekolah.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold">AWS Certified Solutions Architect</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Amazon Web Services - 2023</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Google Cloud Professional</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Google Cloud Platform - 2022</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Meta React Developer</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Meta (Facebook) - 2023</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Operating System</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Windows & Linux OS - 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 px-6 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Testimoni Klien</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">AS</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Ahmad Santoso</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">CEO, Tech Startup</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "VinnZxie sangat profesional dan menghasilkan kode yang berkualitas tinggi. 
+                            Proyek e-commerce kami selesai tepat waktu dan melebihi ekspektasi."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">SR</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Sarah Rahmawati</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Product Manager, Digital Agency</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Kemampuan problem solving VinnZxie luar biasa. Dia selalu menemukan solusi 
+                            terbaik untuk setiap tantangan teknis yang kami hadapi."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">BP</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Budi Pratama</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">CTO, Fintech Company</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "VinnZxie memiliki pemahaman mendalam tentang arsitektur sistem. 
+                            Aplikasi yang dia bangun sangat scalable dan maintainable."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">DF</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Dina Fitriani</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Marketing Director, E-commerce</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Website yang dibuat VinnZxie sangat user-friendly dan loading-nya cepat. 
+                            Conversion rate kami meningkat 35% setelah menggunakan website barunya."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">RH</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Rizki Hidayat</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Founder, Local Business</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Sebagai pemilik bisnis kecil, saya sangat terbantu dengan aplikasi inventory 
+                            yang dibuat VinnZxie. Mudah digunakan dan sangat membantu operasional harian."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">LM</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Lisa Maharani</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">UI/UX Designer, Creative Studio</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Kolaborasi dengan VinnZxie sangat menyenangkan. Dia bisa mengimplementasikan 
+                            design yang kompleks dengan pixel-perfect dan performa yang optimal."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">FA</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Fajar Aditya</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Project Manager, Software House</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "VinnZxie selalu deliver tepat waktu dan komunikasinya sangat baik. 
+                            Tim kami sangat senang bekerja sama dengannya dalam berbagai proyek."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">NS</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Nanda Sari</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Owner, Online Shop</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Aplikasi mobile yang dibuat VinnZxie sangat membantu bisnis online saya. 
+                            Pelanggan jadi lebih mudah berbelanja dan penjualan meningkat signifikan."
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">TW</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tommy Wijaya</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">IT Manager, Manufacturing</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Sistem manajemen produksi yang dikembangkan VinnZxie sangat robust dan reliable. 
+                            Efisiensi operasional perusahaan meningkat drastis setelah implementasi."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">Hubungi Saya</h2>
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Mari Berkolaborasi!</h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                            Saya selalu terbuka untuk proyek baru dan peluang kolaborasi yang menarik. 
+                            Apakah Anda membutuhkan website, aplikasi mobile, atau konsultasi teknologi? 
+                            Mari diskusikan bagaimana saya dapat membantu mewujudkan ide Anda!
+                        </p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-600 dark:text-gray-300">alvinnuriliqbal.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Telepon</p>
+                                    <p class="text-gray-600 dark:text-gray-300">+62 857 0435 9451</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Lokasi</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Banyuwangi, Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Waktu Respon</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Dalam 24 jam</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-primary hover:bg-secondary text-white p-3 rounded-full transition-colors duration-200">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-secondary text-white p-3 rounded-full transition-colors duration-200">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-secondary text-white p-3 rounded-full transition-colors duration-200">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-secondary text-white p-3 rounded-full transition-colors duration-200">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Nama Lengkap</label>
+                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 transition-colors duration-200" placeholder="Nama Anda" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Email</label>
+                                    <input type="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 transition-colors duration-200" placeholder="email@example.com" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Subjek</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 transition-colors duration-200" required>
+                                    <option value="">Pilih Subjek</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-app">Mobile App Development</option>
+                                    <option value="consultation">Konsultasi Teknologi</option>
+                                    <option value="collaboration">Kolaborasi Proyek</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Budget (Opsional)</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 transition-colors duration-200">
+                                    <option value="">Pilih Range Budget</option>
+                                    <option value="under-10m">< 10 Juta</option>
+                                    <option value="10-25m">10 - 25 Juta</option>
+                                    <option value="25-50m">25 - 50 Juta</option>
+                                    <option value="above-50m">> 50 Juta</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Pesan</label>
+                                <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 transition-colors duration-200" placeholder="Ceritakan tentang proyek Anda..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition-colors duration-200 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">VinnZxie</h3>
+                        <p class="text-gray-300 mb-4">
+                            Full Stack Developer yang passionate dalam menciptakan solusi digital inovatif.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-300 hover:text-white transition-colors duration-200">Beranda</a></li>
+                            <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-200">Tentang</a></li>
+                            <li><a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-200">Keahlian</a></li>
+                            <li><a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-200">Proyek</a></li>
+                            <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-200">Kontak</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>Web Development</li>
+                            <li>Mobile App Development</li>
+                            <li>UI/UX Design</li>
+                            <li>Konsultasi Teknologi</li>
+                            <li>Maintenance & Support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p class="text-gray-300">
+                        © 2024 VinnZxie. All rights reserved. Made with ❤️ using modern web technologies.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== JAVASCRIPT FUNCTIONALITY ===== -->
+    <script>
+        /* ===== DARK MODE FUNCTIONALITY ===== */
+        // Toggle between light and dark themes
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+        
+        // Load saved theme preference from localStorage
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        }
+
+        // Handle dark mode toggle click
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+
+        /* ===== MOBILE MENU FUNCTIONALITY ===== */
+        // Handle mobile sidebar menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Open/close mobile menu when hamburger button is clicked
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when overlay is clicked
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        /* ===== NAVIGATION FUNCTIONALITY ===== */
+        // Handle smooth scrolling and active states for navigation links
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        // Add click event to each navigation link
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                // Update active states
+                navLinks.forEach(l => l.classList.remove('active', 'bg-primary', 'text-white'));
+                link.classList.add('active', 'bg-primary', 'text-white');
+                
+                // Smooth scroll to target section
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Close mobile menu after navigation (on mobile devices)
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                }
+            });
+        });
+
+        /* ===== SCROLL SPY FUNCTIONALITY ===== */
+        // Automatically highlight navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            // Determine which section is currently in view
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update navigation link active states based on current section
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'bg-primary', 'text-white');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active', 'bg-primary', 'text-white');
+                }
+            });
+        });
+
+        /* ===== CONTACT FORM FUNCTIONALITY ===== */
+        // Handle contact form submission with success feedback
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message on submit button
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check mr-2"></i>Pesan Terkirim!';
+            button.classList.add('bg-green-500');
+            button.classList.remove('bg-primary');
+            
+            // Reset button and form after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-500');
+                button.classList.add('bg-primary');
+                contactForm.reset();
+            }, 3000);
+        });
+
+        /* ===== BUTTON SCROLL FUNCTIONALITY ===== */
+        // Add smooth scrolling to "Lihat Proyek" buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Lihat Proyek')) {
+                button.addEventListener('click', () => {
+                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in animation to all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
