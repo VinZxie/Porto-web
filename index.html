@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - VinnZxie</title>
+    
+    <!-- EXTERNAL LIBRARIES -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- TAILWIND CONFIGURATION -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',    // Blue - Main brand color
+                        secondary: '#1E40AF',  // Dark blue - Secondary actions
+                        accent: '#F59E0B'      // Orange - Highlights and accents
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CUSTOM CSS STYLES -->
+    <style>
+        /* ===== PROFILE ANIMATIONS ===== */
+        /* Floating animation for profile picture */
+        .profile-float {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(0.5deg); }
+            50% { transform: translateY(-12px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-0.5deg); }
+        }
+        
+        /* Glow effect for profile picture on hover */
+        .profile-glow {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #3B82F6, #1E40AF, #F59E0B, #3B82F6);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            animation: gentleGlow 6s ease-in-out infinite;
+        }
+        
+        .profile-glow:hover::before {
+            opacity: 0.3;
+        }
+        
+        @keyframes gentleGlow {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        /* ===== BACKGROUND ANIMATIONS ===== */
+        /* Animated gradient background */
+        .bg-gradient-to-br {
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* ===== FLOATING BACKGROUND ELEMENTS ===== */
+        /* Enhanced aesthetic floating animations */
+        .aesthetic-drift-1 { animation: aestheticDrift1 15s ease-in-out infinite; }
+        .aesthetic-drift-2 { animation: aestheticDrift2 18s ease-in-out infinite; }
+        .aesthetic-drift-3 { animation: aestheticDrift3 12s ease-in-out infinite; }
+        .aesthetic-drift-4 { animation: aestheticDrift4 20s ease-in-out infinite; }
+        .aesthetic-drift-5 { animation: aestheticDrift5 16s ease-in-out infinite; }
+        
+        /* Enhanced aesthetic drift animations */
+        @keyframes aestheticDrift1 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1) rotate(0deg); 
+                opacity: 0.4; 
+                filter: blur(0px);
+            }
+            25% { 
+                transform: translate(30px, -20px) scale(1.2) rotate(90deg); 
+                opacity: 0.6; 
+                filter: blur(1px);
+            }
+            50% { 
+                transform: translate(-15px, -40px) scale(0.8) rotate(180deg); 
+                opacity: 0.8; 
+                filter: blur(2px);
+            }
+            75% { 
+                transform: translate(-25px, -10px) scale(1.1) rotate(270deg); 
+                opacity: 0.5; 
+                filter: blur(1px);
+            }
+        }
+        
+        @keyframes aestheticDrift2 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1) rotate(0deg); 
+                opacity: 0.3; 
+                background: linear-gradient(45deg, #3B82F6, #1E40AF);
+            }
+            33% { 
+                transform: translate(-40px, 25px) scale(1.3) rotate(120deg); 
+                opacity: 0.7; 
+                background: linear-gradient(45deg, #F59E0B, #3B82F6);
+            }
+            66% { 
+                transform: translate(20px, -15px) scale(0.9) rotate(240deg); 
+                opacity: 0.5; 
+                background: linear-gradient(45deg, #1E40AF, #F59E0B);
+            }
+        }
+        
+        @keyframes aestheticDrift3 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+                opacity: 0.5; 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% { 
+                transform: translate(15px, 30px) scale(1.4); 
+                opacity: 0.8; 
+                box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+            }
+        }
+        
+        @keyframes aestheticDrift4 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg) scale(1); 
+                opacity: 0.4; 
+            }
+            25% { 
+                transform: translate(35px, -30px) rotate(45deg) scale(1.1); 
+                opacity: 0.6; 
+            }
+            75% { 
+                transform: translate(-20px, 40px) rotate(-45deg) scale(0.9); 
+                opacity: 0.7; 
+            }
+        }
+        
+        @keyframes aestheticDrift5 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+                opacity: 0.6; 
+            }
+            40% { 
+                transform: translate(-25px, -35px) scale(0.7); 
+                opacity: 0.4; 
+            }
+            80% { 
+                transform: translate(45px, 20px) scale(1.3); 
+                opacity: 0.9; 
+            }
+        }
+        
+        /* ===== SKILL LOGO ANIMATIONS ===== */
+        .skill-logo {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+
+<!-- ===== MAIN BODY ===== -->
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- ===== NAVIGATION CONTROLS ===== -->
+    <!-- Dark/Light Mode Toggle Button (Outside Sidebar) -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+        <i id="moonIcon" class="fas fa-moon text-lg"></i>
+        <i id="sunIcon" class="fas fa-sun text-lg hidden"></i>
+    </button>
+
+    <!-- Mobile Menu Toggle Button (Hidden on desktop) -->
+    <button id="mobileMenuBtn" class="lg:hidden fixed top-4 left-4 z-50 bg-primary text-white p-3 rounded-lg shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- ===== SIDEBAR NAVIGATION ===== -->
+    <!-- Responsive left sidebar with profile and navigation menu -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto">
+        <div class="p-4 lg:p-6">
+            
+            <!-- ===== PROFILE SECTION ===== -->
+            <!-- Profile picture, name, and social links -->
+            <div class="text-center mb-8">
+                <!-- Profile Picture Container -->
+                <div class="w-24 h-24 mx-auto mb-4 relative">
+                    <!-- Profile Picture from Google -->
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/w=600/posts/images/662699211934093925/2e5373b5-1f8a-48dc-b6f3-14d6ca5ce024.jpg" 
+                         alt="VinnZxie Profile Picture" 
+                         class="w-full h-full profile-float profile-glow border-4 border-primary rounded-full shadow-lg object-cover"
+                         onerror="this.src='https://ui-avatars.com/api/?name=VinnZxie&background=3B82F6&color=fff&size=96&rounded=true'; this.alt='VinnZxie Avatar';">
+                </div>
+                
+                <!-- Name and Title -->
+                <h1 class="text-xl font-bold mb-2">VinnZxie</h1>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">Alvin Nuril Iqbal</p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs mb-4">3.5+ Tahun Pengalaman</p>
+                
+                <!-- Social Media Links -->
+                <div class="flex justify-center space-x-3">
+                    <a href="https://github.com/VinZxie" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="https://instagram.com/vinzxie" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://tiktok.com/@vinzxie_" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-tiktok text-lg"></i>
+                    </a>
+                    <a href="mailto:allvinnuriliqbal@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- ===== NAVIGATION MENU ===== -->
+            <!-- Main navigation links -->
+            <nav class="space-y-2">
+                <a href="#home" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-home text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="#about" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-user text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Tentang</span>
+                </a>
+                <a href="#experience" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-briefcase text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Pengalaman</span>
+                </a>
+                <a href="#skills" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-cogs text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Keahlian</span>
+                </a>
+                <a href="#education" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-graduation-cap text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Pendidikan</span>
+                </a>
+                <a href="#projects" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-folder-open text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Proyek</span>
+                </a>
+                <a href="#testimonials" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-star text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Testimoni</span>
+                </a>
+                <a href="#contact" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white transition-all duration-300 group">
+                    <i class="fas fa-envelope text-lg group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Kontak</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <!-- Main content with left margin to accommodate sidebar -->
+    <div class="lg:ml-64 min-h-screen">
+        
+        <!-- ===== FLOATING BACKGROUND DECORATIONS ===== -->
+        <!-- Enhanced aesthetic floating elements for visual appeal -->
+        <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+            <div class="absolute top-20 left-10 w-24 h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full aesthetic-drift-1"></div>
+            <div class="absolute top-40 right-20 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full aesthetic-drift-2"></div>
+            <div class="absolute bottom-40 left-20 w-28 h-28 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-full aesthetic-drift-3"></div>
+            <div class="absolute bottom-20 right-10 w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full aesthetic-drift-4"></div>
+            <div class="absolute top-60 left-1/2 w-36 h-36 bg-gradient-to-br from-accent/15 to-secondary/15 rounded-full aesthetic-drift-5"></div>
+            <div class="absolute top-80 right-1/3 w-16 h-16 bg-gradient-to-br from-primary/25 to-secondary/25 rounded-full aesthetic-drift-1"></div>
+        </div>
+        
+        <!-- ===== MAIN CONTENT CONTAINER ===== -->
+        <!-- Container for all page sections with proper spacing -->
+        <div class="relative z-10 p-4 sm:p-6 lg:p-8">
+            
+            <!-- ===== HOME SECTION ===== -->
+            <!-- Hero section with animated background -->
+            <section id="home" class="min-h-screen flex items-center justify-center mb-16">
+                <div class="text-center max-w-4xl mx-auto px-4">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                        Halo, Saya VinnZxie
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-gray-700 dark:text-gray-200">
+                        Alvin Nuril Iqbal
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Siswa SMK TJKT dengan passion dalam pengembangan web dan teknologi jaringan. 
+                        Berpengalaman 3.5+ tahun dalam membangun solusi digital yang inovatif dan user-friendly.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#projects" class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 hover:shadow-lg">
+                            <i class="fas fa-folder-open mr-2"></i>
+                            Lihat Proyek
+                        </a>
+                        <a href="#contact" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ABOUT SECTION ===== -->
+            <!-- Personal information and career journey -->
+            <section id="about" class="mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Tentang Saya</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- About Text -->
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Perjalanan Karir Saya</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                            Memulai perjalanan di dunia teknologi sejak 2022, saya telah mengembangkan keahlian 
+                            dalam pengembangan web, jaringan komputer, dan teknologi informasi. Sebagai siswa SMK TJKT, 
+                            saya aktif mengerjakan berbagai proyek yang menggabungkan teori dan praktik.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                            Dengan pengalaman 3.5+ tahun, saya telah menguasai berbagai teknologi modern dan 
+                            berkomitmen untuk terus belajar mengikuti perkembangan industri teknologi yang dinamis.
+                        </p>
+                        
+                        <!-- Personal Info -->
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-user text-primary mr-3"></i>
+                                <span><strong>Nama Lengkap:</strong> Alvin Nuril Iqbal</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-primary mr-3"></i>
+                                <span><strong>Pendidikan:</strong> SMK TJKT</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-primary mr-3"></i>
+                                <span><strong>Lokasi:</strong> Banyuwangi, Indonesia</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar text-primary mr-3"></i>
+                                <span><strong>Pengalaman:</strong> 3.5+ Tahun</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-primary mr-3"></i>
+                                <span><strong>Email:</strong> allvinnuriliqbal@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Progress -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-center">Tingkat Keahlian</h3>
+                        
+                        <!-- Skill Progress Bars -->
+                        <div class="space-y-6">
+                            <!-- Web Development -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Web Development</span>
+                                    <span class="text-primary font-semibold">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-3 rounded-full transition-all duration-1000 ease-out" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- JavaScript -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">JavaScript</span>
+                                    <span class="text-primary font-semibold">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Networking -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Jaringan Komputer</span>
+                                    <span class="text-primary font-semibold">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Database -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Database Management</span>
+                                    <span class="text-primary font-semibold">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-purple-400 to-pink-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- System Administration -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">System Administration</span>
+                                    <span class="text-primary font-semibold">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-red-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== EXPERIENCE SECTION ===== -->
+            <!-- Work experience and career timeline -->
+            <section id="experience" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Pengalaman Kerja</h2>
+                
+                <!-- Experience Timeline -->
+                <div class="max-w-4xl mx-auto">
+                    <!-- Experience Item 1 -->
+                    <div class="relative pl-8 pb-8 border-l-2 border-primary/30">
+                        <div class="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-semibold">Freelance Web Developer</h3>
+                                <span class="text-sm text-gray-500 bg-primary/10 px-3 py-1 rounded-full">2023 - Sekarang</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Mengembangkan website dan aplikasi web untuk berbagai klien, termasuk toko online, 
+                                company profile, dan sistem manajemen sederhana.
+                            </p>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Membangun 15+ website responsif menggunakan HTML, CSS, JavaScript</li>
+                                <li>• Mengintegrasikan database MySQL untuk sistem manajemen data</li>
+                                <li>• Optimasi SEO dan performa website untuk loading yang lebih cepat</li>
+                                <li>• Maintenance dan update berkala untuk keamanan website</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Item 2 -->
+                    <div class="relative pl-8 pb-8 border-l-2 border-primary/30">
+                        <div class="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-semibold">IT Support Intern</h3>
+                                <span class="text-sm text-gray-500 bg-primary/10 px-3 py-1 rounded-full">2022 - 2023</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Magang di perusahaan lokal sebagai IT Support, menangani troubleshooting hardware, 
+                                software, dan jaringan komputer.
+                            </p>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Troubleshooting masalah hardware dan software komputer</li>
+                                <li>• Konfigurasi jaringan LAN dan WiFi untuk kantor</li>
+                                <li>• Instalasi dan maintenance sistem operasi Windows dan Linux</li>
+                                <li>• Backup data dan recovery system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Item 3 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full"></div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-semibold">Junior Network Technician</h3>
+                                <span class="text-sm text-gray-500 bg-primary/10 px-3 py-1 rounded-full">2022</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Memulai karir sebagai teknisi jaringan junior, mempelajari dasar-dasar 
+                                konfigurasi router, switch, dan troubleshooting jaringan.
+                            </p>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Konfigurasi dasar router dan switch Cisco</li>
+                                <li>• Monitoring traffic jaringan dan bandwidth</li>
+                                <li>• Instalasi kabel UTP dan testing koneksi</li>
+                                <li>• Dokumentasi topologi jaringan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SKILLS SECTION ===== -->
+            <!-- Technical skills with programming language logos -->
+            <section id="skills" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Keahlian Teknis</h2>
+                
+                <!-- Programming Languages -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Bahasa Pemrograman</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <!-- HTML5 Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none">
+                                <path d="M2 3L4 21L12 23L20 21L22 3H2Z" fill="#E34F26"/>
+                                <path d="M12 5V21L18.5 19.5L20 5H12Z" fill="#FF5722"/>
+                                <path d="M12 9H8L8.5 13H12V17L9 16L8.5 14H6L7 18L12 19V9Z" fill="white"/>
+                                <path d="M12 9V13H15.5L15 17L12 18V22L17 20L18 14H12H16L16.5 10H12V9Z" fill="white"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">HTML5</p>
+                        </div>
+                        
+                        <!-- CSS3 Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none">
+                                <path d="M2 3L4 21L12 23L20 21L22 3H2Z" fill="#1572B6"/>
+                                <path d="M12 5V21L18.5 19.5L20 5H12Z" fill="#33A9DC"/>
+                                <path d="M12 9H8L8.5 13H12V17L9 16L8.5 14H6L7 18L12 19V9Z" fill="white"/>
+                                <path d="M12 9V13H15.5L15 17L12 18V22L17 20L18 14H12H16L16.5 10H12V9Z" fill="white"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">CSS3</p>
+                        </div>
+                        
+                        <!-- JavaScript Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="#F7DF1E">
+                                <rect width="24" height="24" fill="#F7DF1E"/>
+                                <path d="M7.5 15.5C7.5 16.88 8.12 17.5 9.5 17.5C10.88 17.5 11.5 16.88 11.5 15.5V9H9.5V15.5Z" fill="black"/>
+                                <path d="M13 17.5H15C16.38 17.5 17 16.88 17 15.5C17 14.12 16.38 13.5 15 13.5H14V12H16V10H13V17.5Z" fill="black"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">JavaScript</p>
+                        </div>
+                        
+                        <!-- PHP Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none">
+                                <ellipse cx="12" cy="12" rx="10" ry="6" fill="#777BB4"/>
+                                <path d="M7 10H9C9.55 10 10 10.45 10 11V13C10 13.55 9.55 14 9 14H7V10Z" fill="white"/>
+                                <path d="M14 10V14H15V12H16C16.55 12 17 11.55 17 11V11C17 10.45 16.55 10 16 10H14Z" fill="white"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">PHP</p>
+                        </div>
+                        
+                        <!-- Python Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C8.5 2 7 3.5 7 6V8H12V9H5C3.5 9 2 10.5 2 13C2 15.5 3.5 17 5 17H7V15C7 13.5 8.5 12 10 12H14C15.5 12 17 10.5 17 9V6C17 3.5 15.5 2 12 2Z" fill="#3776AB"/>
+                                <path d="M12 22C15.5 22 17 20.5 17 18V16H12V15H19C20.5 15 22 13.5 22 11C22 8.5 20.5 7 19 7H17V9C17 10.5 15.5 12 14 12H10C8.5 12 7 13.5 7 15V18C7 20.5 8.5 22 12 22Z" fill="#FFD43B"/>
+                                <circle cx="10" cy="6" r="1" fill="white"/>
+                                <circle cx="14" cy="18" r="1" fill="white"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">Python</p>
+                        </div>
+                        
+                        <!-- MySQL Logo -->
+                        <div class="skill-logo bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="#4479A1"/>
+                                <path d="M8 8H16V10H8V8ZM8 12H16V14H8V12ZM8 16H14V18H8V16Z" fill="white"/>
+                            </svg>
+                            <p class="text-sm mt-2 text-center font-medium">MySQL</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Skill Category 1 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-code text-4xl text-primary mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">Web Development</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• HTML5 & CSS3</li>
+                                <li>• JavaScript ES6+</li>
+                                <li>• Responsive Design</li>
+                                <li>• Bootstrap & Tailwind</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Category 2 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-server text-4xl text-green-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">Backend Development</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• PHP & MySQL</li>
+                                <li>• Python (Basic)</li>
+                                <li>• RESTful API</li>
+                                <li>• Database Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Category 3 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-network-wired text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">Jaringan Komputer</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Cisco Router & Switch</li>
+                                <li>• TCP/IP & Subnetting</li>
+                                <li>• VLAN Configuration</li>
+                                <li>• Network Troubleshooting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Category 4 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-tools text-4xl text-orange-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">System Administration</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Windows Server</li>
+                                <li>• Linux (Ubuntu, CentOS)</li>
+                                <li>• Hardware Maintenance</li>
+                                <li>• System Monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Category 5 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt text-4xl text-red-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">Cybersecurity</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Network Security</li>
+                                <li>• Firewall Configuration</li>
+                                <li>• Vulnerability Assessment</li>
+                                <li>• Security Best Practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Category 6 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-center">
+                            <i class="fas fa-mobile-alt text-4xl text-purple-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-4">Mobile & Others</h3>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>• Git Version Control</li>
+                                <li>• Project Management</li>
+                                <li>• Technical Documentation</li>
+                                <li>• Problem Solving</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== EDUCATION SECTION ===== -->
+            <!-- Educational background -->
+            <section id="education" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Pendidikan</h2>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Education Item -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <div>
+                                <h3 class="text-2xl font-semibold mb-2">SMK TJKT</h3>
+                                <p class="text-lg text-gray-600 dark:text-gray-300">SMKN 1 Banyuwangi</p>
+                                <p class="text-gray-500 dark:text-gray-400">Teknik Jaringan Komputer & Telekomunikasi</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    2023 - 2026
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold mb-3">Mata Pelajaran Utama:</h4>
+                                <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                    <li>• Administrasi Infrastruktur Jaringan</li>
+                                    <li>• Teknologi Layanan Jaringan</li>
+                                    <li>• Administrasi Sistem Jaringan</li>
+                                    <li>• Teknologi WAN</li>
+                                    <li>• Keamanan Jaringan</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Prestasi & Aktivitas:</h4>
+                                <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                                    <li>• Konsisten Dalam Dunia IT</li>
+                                    <li>• Anggota Aktif IT Club</li>
+                                    <li>• Sertifikasi Cisco IT Essentials</li>
+                                    <li>• Prakerin di Perusahaan IT Lokal</li>
+                                    <li>• Tutor Sebaya Mata Pelajaran Jaringan</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== PROJECTS SECTION ===== -->
+            <!-- Portfolio projects showcase -->
+            <section id="projects" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Proyek Terbaru</h2>
+                
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">E-Commerce Website</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Website toko online lengkap dengan sistem pembayaran, manajemen produk, 
+                                dan dashboard admin yang user-friendly.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">PHP</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs md:text-sm rounded-full">MySQL</span>
+                                <span class="px-2 md:px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs md:text-sm rounded-full">JavaScript</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">Network Monitoring System</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Sistem monitoring jaringan real-time dengan dashboard interaktif untuk 
+                                memantau status perangkat dan traffic jaringan.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs md:text-sm rounded-full">Python</span>
+                                <span class="px-2 md:px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs md:text-sm rounded-full">Flask</span>
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">SNMP</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">School Management System</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Sistem manajemen sekolah dengan fitur absensi, nilai, jadwal, 
+                                dan komunikasi antara guru, siswa, dan orang tua.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">PHP</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs md:text-sm rounded-full">MySQL</span>
+                                <span class="px-2 md:px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs md:text-sm rounded-full">Bootstrap</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">Business Analytics Dashboard</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Dashboard analitik bisnis dengan visualisasi data interaktif untuk 
+                                membantu pengambilan keputusan berbasis data.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs md:text-sm rounded-full">JavaScript</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs md:text-sm rounded-full">Chart.js</span>
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">API</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-teal-400 to-green-500 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">Mobile App Landing Page</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Landing page responsif untuk aplikasi mobile dengan animasi menarik 
+                                dan optimasi SEO yang baik.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">HTML5</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs md:text-sm rounded-full">CSS3</span>
+                                <span class="px-2 md:px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs md:text-sm rounded-full">GSAP</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="h-32 md:h-48 bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center">
+                            <i class="fas fa-robot text-white text-2xl md:text-4xl"></i>
+                        </div>
+                        <div class="p-3 md:p-6">
+                            <h3 class="text-sm md:text-xl font-semibold mb-1 md:mb-2">Chatbot Customer Service</h3>
+                            <p class="text-xs md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3">
+                                Chatbot AI untuk customer service dengan natural language processing 
+                                dan integrasi dengan database FAQ.
+                            </p>
+                            <div class="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
+                                <span class="px-2 md:px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs md:text-sm rounded-full">Python</span>
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm rounded-full">NLP</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs md:text-sm rounded-full">Flask</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TESTIMONIALS SECTION ===== -->
+            <!-- Client testimonials and reviews -->
+            <section id="testimonials" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Testimoni Klien</h2>
+                
+                <!-- Testimonials Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                AS
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Ahmad Santoso</h4>
+                                <p class="text-xs md:text-sm text-gray-500">CEO, PT Digital Nusantara</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "VinnZxie sangat profesional dalam mengerjakan website company profile kami. 
+                            Hasilnya melebihi ekspektasi dan selesai tepat waktu!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                SR
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Sari Rahayu</h4>
+                                <p class="text-xs md:text-sm text-gray-500">Owner, Toko Berkah Jaya</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "Website toko online yang dibuat VinnZxie sangat membantu bisnis saya. 
+                            Penjualan meningkat 200% setelah website launching!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                BP
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Budi Prasetyo</h4>
+                                <p class="text-xs md:text-sm text-gray-500">IT Manager, CV Maju Bersama</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "Kemampuan troubleshooting jaringan VinnZxie luar biasa. 
+                            Masalah yang sudah berhari-hari bisa diselesaikan dalam hitungan jam!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                LM
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Lisa Maharani</h4>
+                                <p class="text-xs md:text-sm text-gray-500">Principal, SMA Negeri 5</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "Sistem manajemen sekolah yang dibuat sangat memudahkan administrasi. 
+                            Interface user-friendly dan fitur lengkap sesuai kebutuhan sekolah."
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                RH
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Rizki Hidayat</h4>
+                                <p class="text-xs md:text-sm text-gray-500">Founder, Startup TechSolution</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "VinnZxie membantu setup infrastruktur jaringan startup kami. 
+                            Sangat detail, dokumentasi lengkap, dan support after-sales yang baik."
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-2 md:mb-4">
+                            <div class="w-8 md:w-12 h-8 md:h-12 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold mr-2 md:mr-4 text-xs md:text-base">
+                                DN
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm md:text-base">Dewi Nurhasanah</h4>
+                                <p class="text-xs md:text-sm text-gray-500">Marketing Manager, PT Kreatif Media</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 md:mb-4">
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-base line-clamp-4">
+                            "Landing page yang dibuat VinnZxie sangat menarik dan conversion rate tinggi. 
+                            Desain modern dan loading speed yang cepat. Highly recommended!"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== CONTACT SECTION ===== -->
+            <!-- Contact form and information -->
+            <section id="contact" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Hubungi Saya</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Contact Information -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Mari Berkolaborasi!</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                            Saya siap membantu mewujudkan ide digital Anda menjadi kenyataan. 
+                            Dengan pengalaman 3.5+ tahun, saya dapat memberikan solusi teknologi 
+                            yang tepat untuk kebutuhan bisnis atau proyek Anda.
+                        </p>
+                        
+                        <!-- Contact Items -->
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-primary text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">allvinnuriliqbal@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-primary text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">WhatsApp</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">+62 857-0435-9451</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Lokasi</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Banyuwangi, Indonesia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-primary text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Waktu Respon</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">< 24 Jam</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media -->
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4">Ikuti Saya</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/VinZxie" target="_blank" class="w-10 h-10 bg-primary/10 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://instagram.com/vinzxie" target="_blank" class="w-10 h-10 bg-primary/10 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://tiktok.com/@vinzxie_" target="_blank" class="w-10 h-10 bg-primary/10 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="mailto:allvinnuriliqbal@gmail.com" class="w-10 h-10 bg-primary/10 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-300">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6">Kirim Pesan</h3>
+                        
+                        <form class="space-y-6">
+                            <!-- Name Field -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-300" placeholder="Masukkan nama Anda" required>
+                            </div>
+                            
+                            <!-- Email Field -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-300" placeholder="nama@email.com" required>
+                            </div>
+                            
+                            <!-- Subject Field -->
+                            <div>
+                                <label for="subject" class="block text-sm font-medium mb-2">Subjek</label>
+                                <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-300" required>
+                                    <option value="">Pilih layanan yang dibutuhkan</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="network-setup">Network Setup</option>
+                                    <option value="it-consultation">IT Consultation</option>
+                                    <option value="maintenance">System Maintenance</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Message Field -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">Pesan</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors duration-300 resize-none" placeholder="Jelaskan kebutuhan proyek Anda..." required></textarea>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-300 hover:shadow-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT FUNCTIONALITY ===== -->
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', currentTheme === 'dark');
+        
+        // Update icons based on current theme
+        function updateIcons() {
+            if (html.classList.contains('dark')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        }
+        
+        // Initialize icons
+        updateIcons();
+        
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            updateIcons();
+        });
+
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // ===== SMOOTH SCROLLING FOR NAVIGATION =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth < 1024) {
+                        sidebar.classList.add('-translate-x-full');
+                    }
+                }
+            });
+        });
+
+        // ===== ACTIVE NAVIGATION HIGHLIGHTING =====
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function highlightActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-primary', 'text-white');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-primary', 'text-white');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+
+        // ===== FORM SUBMISSION HANDLER =====
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Mohon lengkapi semua field!');
+                return;
+            }
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Halo VinnZxie!%0A%0ANama: ${name}%0AEmail: ${email}%0ALayanan: ${subject}%0A%0APesan:%0A${message}`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/6285704359451?text=${whatsappMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // ===== CLOSE MOBILE MENU ON OUTSIDE CLICK =====
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth < 1024) {
+                if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            }
+        });
+
+        // ===== CLOSE MOBILE MENU ON WINDOW RESIZE =====
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.remove('-translate-x-full');
+            }
+        });
+
+        // ===== INITIALIZE PAGE =====
+        // Highlight active section on page load
+        highlightActiveSection();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96df89eb5609ea8a',t:'MTc1NDk5NzE1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
