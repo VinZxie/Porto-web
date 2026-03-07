@@ -167,7 +167,7 @@ const T = {
     'f-email': 'Email',
     'f-msg':   'Message',
     'f-send':  'Send Message →',
-    'foot':    'Credit By Vinn Project · 2026',
+    '<p data-id="foot">Credit By <strong>Vinn Project</strong> · 2026</p>',
   }
 };
 
