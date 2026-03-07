@@ -167,7 +167,7 @@ const T = {
     'f-email': 'Email',
     'f-msg':   'Message',
     'f-send':  'Send Message →',
-    'Credit By Vinn Project · 2026',
+    'foot':    'Credit By <strong>Vinn Project</strong> · 2026',
   }
 };
 
@@ -179,10 +179,16 @@ function toggleLang() {
   document.documentElement.lang = lang;
 
   const d = T[lang];
-  document.querySelectorAll('[data-id]').forEach(el => {
-    const k = el.getAttribute('data-id');
-    if (d[k] !== undefined) el.textContent = d[k];
-  });
+   document.querySelectorAll('[data-id]').forEach(el => {
+   const k = el.getAttribute('data-id');
+     if (d[k] !== undefined) {
+      if (k === 'foot') {
+      el.innerHTML = d[k]; // pakai innerHTML khusus footer
+    } else {
+      el.textContent = d[k];
+    }
+  }
+});
 
   // Hero name butuh update manual karena ada di span terpisah
   document.getElementById('hname').textContent = lang === 'id' ? 'saya Vinn' : "I'm Vinn";
