@@ -111,7 +111,7 @@ const T = {
     'f-email': 'Email',
     'f-msg':   'Pesan',
     'f-send':  'Kirim Pesan →',
-    'foot':    'Dibuat dengan ❤️ oleh Alvin Nuril Iqbal (Vinn) · 2024',
+    'foot':    'Credit By Vinn Project · 2026',
   },
   en: {
     'n-about':   'About',
@@ -167,7 +167,7 @@ const T = {
     'f-email': 'Email',
     'f-msg':   'Message',
     'f-send':  'Send Message →',
-    'foot':    'Made with ❤️ by Alvin Nuril Iqbal (Vinn) · 2024',
+    'foot':    'Credit By Vinn Project · 2026',
   }
 };
 
