@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+:root,
+html[data-theme='dark'],
+.dark {
+  --bg-page: #08090c;
+  --bg-surface: rgba(16, 20, 29, 0.45);
+  --bg-elevated: rgba(22, 27, 40, 0.55);
+  --bg-subtle: rgba(28, 35, 52, 0.6);
+  --bg-accent-subtle: rgba(249, 115, 22, 0.12);
+  --text-main: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --border-main: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(249, 115, 22, 0.5);
+  --card-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+  --grid-line: rgba(255, 255, 255, 0.03);
+}
+
+html[data-theme='light'],
+.light {
+  --bg-page: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.52);
+  --bg-elevated: rgba(241, 245, 249, 0.65);
+  --bg-subtle: rgba(226, 232, 240, 0.7);
+  --bg-accent-subtle: rgba(234, 88, 12, 0.08);
+  --text-main: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  --border-main: rgba(226, 232, 240, 0.8);
+  --border-subtle: rgba(241, 245, 249, 0.85);
+  --border-card: rgba(255, 255, 255, 0.85);
+  --border-focus: rgba(234, 88, 12, 0.45);
+  --card-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.06), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  --grid-line: rgba(15, 23, 42, 0.04);
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-signature {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive;
+}
+
+.font-heading {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+/* Architectural panel surfaces with theme awareness & liquid glass */
+.arch-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arch-card:hover {
+  border-color: var(--border-focus);
+}
+
+.arch-card-interactive {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arch-card-interactive:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-focus);
+}
+
+/* Clean, modern transparent glass utility classes (flat & modern, no 3D bevels) */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-card);
+}
+
+html[data-theme='light'] .liquid-glass,
+.light .liquid-glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.liquid-glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-card);
+}
+
+html[data-theme='light'] .liquid-glass-pill,
+.light .liquid-glass-pill {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Architectural grid overlay */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.bg-dots-pattern {
+  background-size: 20px 20px;
+  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+}
+
+
