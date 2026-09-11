@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
@@ -26,6 +26,7 @@ import {
   Youtube,
   X,
 } from 'lucide-react';
+import { VLogo } from './VLogo';
 
 interface NavbarProps {
   activeSection: string;
@@ -151,6 +152,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
     setTimeout(() => setCopied(false), 2200);
   };
 
+  // Mobile horizontal nav slider ref
+  const mobileNavContainerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll the mobile quick-nav slider so the active pill is smoothly brought into view
+  useEffect(() => {
+    if (mobileNavContainerRef.current) {
+      const activeEl = mobileNavContainerRef.current.querySelector<HTMLElement>(`#mobile-quick-nav-${activeSection}`);
+      if (activeEl) {
+        const container = mobileNavContainerRef.current;
+        const left = activeEl.offsetLeft - (container.clientWidth / 2) + (activeEl.clientWidth / 2);
+        container.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+      }
+    }
+  }, [activeSection]);
+
   // Find currently active link for mobile HUD pill
   const activeLink = navLinks.find((l) => l.id === activeSection) || navLinks[0];
 
@@ -189,6 +205,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
               />
             </div>
             <div className="flex flex-col min-w-0">
+              <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono text-orange-500 font-bold tracking-wider uppercase leading-none mb-0.5 select-none">
+                <VLogo className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-orange-500 shrink-0" />
+                <span className="opacity-90">VINZXIE</span>
+              </div>
               <div className="flex items-center gap-1.5 leading-tight">
                 <span className="font-bold text-xs sm:text-sm tracking-tight text-[var(--text-main)] group-hover:text-orange-500 transition-colors truncate max-w-[120px] xs:max-w-[170px] sm:max-w-none">
                   Alvin Nuril Iqbal
@@ -396,6 +416,45 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
         </div>
 
       </div>
+
+      {/* Mobile Horizontal Navigation Slider Bar (Frictionless Quick Slider on POV Mobile) */}
+      <nav
+        ref={mobileNavContainerRef}
+        id="mobile-nav-slider-bar"
+        aria-label="Mobile Navigation Slider"
+        className="lg:hidden border-t border-orange-500/15 overflow-x-auto no-scrollbar px-2.5 py-1.5 flex items-center gap-1.5 relative scroll-smooth select-none bg-black/[0.02] dark:bg-white/[0.02]"
+      >
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.id;
+          return (
+            <a
+              key={link.id}
+              href={link.href}
+              id={`mobile-quick-nav-${link.id}`}
+              onClick={(e) => handleNavLinkClick(e, link)}
+              className={`relative px-2.5 py-1 rounded-full text-[11px] font-mono whitespace-nowrap transition-colors duration-200 select-none z-10 flex items-center gap-1.5 shrink-0 ${
+                isActive
+                  ? 'text-orange-600 dark:text-orange-400 font-bold'
+                  : 'text-[var(--text-muted)] hover:text-orange-500'
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="mobile-h-navbar-active-pill"
+                  className="absolute inset-0 rounded-full bg-orange-500/15 dark:bg-orange-500/20 border border-orange-500/40 backdrop-blur-md -z-10 shadow-xs pointer-events-none"
+                  transition={{
+                    type: 'spring',
+                    stiffness: 380,
+                    damping: 30,
+                    mass: 0.8,
+                  }}
+                />
+              )}
+              <span>{link.label}</span>
+            </a>
+          );
+        })}
+      </nav>
     </header>
 
     {/* Bespoke Mobile Command Deck (Full-screen Portal into document.body - escaped from header backdrop blur) */}
@@ -415,8 +474,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
             <div className="absolute top-0 right-1/4 w-72 h-72 rounded-full bg-orange-500/15 blur-3xl pointer-events-none -z-10" />
             <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none -z-10" />
 
-            {/* Container for the Deck */}
-            <div className="w-full max-w-lg mx-auto p-4 sm:p-6 flex flex-col min-h-full justify-between gap-4">
+            {/* Container for the Deck with Spring Slide-Down Animation */}
+            <motion.div
+              initial={{ opacity: 0, y: -28, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+              className="w-full max-w-lg mx-auto p-4 sm:p-6 flex flex-col min-h-full justify-between gap-4"
+            >
               
               {/* Top Bar inside Drawer: Telemetry & Close Trigger */}
               <div className="flex items-center justify-between pb-3 border-b border-orange-500/20">
@@ -456,12 +521,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
                     <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[var(--bg-page)]" />
                   </div>
                   <div className="min-w-0">
+                    <div className="flex items-center gap-1 text-[9px] font-mono text-orange-500 font-bold tracking-wider uppercase leading-none mb-0.5 select-none">
+                      <VLogo className="w-2.5 h-2.5 text-orange-500 shrink-0" />
+                      <span>VINZXIE</span>
+                    </div>
                     <div className="flex items-center gap-1.5">
                       <h4 className="font-bold text-sm text-[var(--text-main)] truncate">
                         Alvin Nuril Iqbal
                       </h4>
                       <span className="text-[9px] font-mono px-1 rounded bg-orange-500/15 text-orange-600 dark:text-orange-400 font-bold">
-                        VinnZxie
+                        TRK
                       </span>
                     </div>
                     <p className="text-[11px] font-mono text-[var(--text-dim)] truncate">
@@ -488,25 +557,39 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
                   <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase">
                     {lang === 'id' ? 'BAHASA' : 'LANGUAGE'}
                   </span>
-                  <div className="flex items-center gap-1 w-full">
+                  <div className="flex items-center gap-1 w-full relative">
                     <button
                       onClick={() => setLang('id')}
-                      className={`flex-1 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
+                      className={`relative flex-1 py-1 rounded-md text-[10px] font-mono font-bold transition-colors z-10 ${
                         lang === 'id'
-                          ? 'bg-orange-500 text-white shadow-xs'
+                          ? 'text-white'
                           : 'text-[var(--text-dim)] hover:text-[var(--text-main)]'
                       }`}
                     >
+                      {lang === 'id' && (
+                        <motion.span
+                          layoutId="mobile-drawer-lang-pill"
+                          className="absolute inset-0 rounded-md bg-orange-500 shadow-xs -z-10"
+                          transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                        />
+                      )}
                       ID
                     </button>
                     <button
                       onClick={() => setLang('en')}
-                      className={`flex-1 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
+                      className={`relative flex-1 py-1 rounded-md text-[10px] font-mono font-bold transition-colors z-10 ${
                         lang === 'en'
-                          ? 'bg-orange-500 text-white shadow-xs'
+                          ? 'text-white'
                           : 'text-[var(--text-dim)] hover:text-[var(--text-main)]'
                       }`}
                     >
+                      {lang === 'en' && (
+                        <motion.span
+                          layoutId="mobile-drawer-lang-pill"
+                          className="absolute inset-0 rounded-md bg-orange-500 shadow-xs -z-10"
+                          transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                        />
+                      )}
                       EN
                     </button>
                   </div>
@@ -583,10 +666,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
                       onClick={(e) => handleNavLinkClick(e, link)}
                       className={`group relative p-2.5 rounded-xl transition-all flex items-center justify-between gap-3 border ${
                         isActive
-                          ? 'bg-orange-500/15 border-orange-500/50 shadow-md shadow-orange-500/10'
+                          ? 'border-orange-500/50 shadow-md shadow-orange-500/10'
                           : 'bg-[var(--bg-elevated)]/50 hover:bg-[var(--bg-elevated)] border-[var(--border-subtle)] hover:border-orange-500/30'
                       }`}
                     >
+                      {isActive && (
+                        <motion.div
+                          layoutId="mobile-drawer-active-pill"
+                          className="absolute inset-0 rounded-xl bg-orange-500/15 border-2 border-orange-500/50 backdrop-blur-md -z-10 shadow-xs pointer-events-none"
+                          transition={{
+                            type: 'spring',
+                            stiffness: 380,
+                            damping: 32,
+                            mass: 0.8,
+                          }}
+                        />
+                      )}
                       <div className="flex items-center gap-3 min-w-0">
                         {/* Icon Badge with Orange Halo on Active */}
                         <div
@@ -700,7 +795,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectSlide, on
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>,

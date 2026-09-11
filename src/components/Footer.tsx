@@ -3,6 +3,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import { ArrowUp, Github, Instagram, Youtube, Mail } from 'lucide-react';
+import { VLogo } from './VLogo';
 
 export const Footer: React.FC = () => {
   const { lang } = useLanguage();
@@ -36,7 +37,11 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-8 border-b border-[var(--border-subtle)]">
           
           {/* Identity */}
-          <div className="space-y-1">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono text-orange-500 font-bold uppercase tracking-wider select-none">
+              <VLogo className="w-3 h-3 text-orange-500" />
+              <span>VINZXIE</span>
+            </div>
             <a 
               href="#" 
               className="text-sm font-semibold text-[var(--text-main)] hover:text-orange-500 transition-colors tracking-tight block"

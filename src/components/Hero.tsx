@@ -11,6 +11,7 @@ import {
   Database,
   Network
 } from 'lucide-react';
+import { VLogo } from './VLogo';
 
 interface HeroProps {
   activeSlide?: 'projects' | 'subnet';
@@ -36,9 +37,18 @@ export const Hero: React.FC<HeroProps> = () => {
           {/* Left Column: Signature Greeting & Typographic Hallmark */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Status Pill */}
+            {/* Elegant Minimalist V Logo Emblem & Status Eyebrow */}
             <div className="flex items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.04] backdrop-blur-md border border-orange-500/25 text-xs font-mono">
+              <div
+                id="hero-v-logo-mark"
+                className="group relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[var(--bg-surface)] border border-orange-500/30 hover:border-orange-500/60 shadow-xs transition-all duration-300 hover:scale-105 select-none shrink-0 cursor-default"
+                title="VinnZxie // Monogram"
+              >
+                <span className="absolute -inset-0.5 rounded-xl bg-orange-500/15 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 pointer-events-none" />
+                <VLogo className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-orange-500 group-hover:text-orange-400 transition-colors" />
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.04] backdrop-blur-md border border-orange-500/25 text-xs font-mono">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[var(--text-muted)]">{t.greetingPrefix}</span>
                 <span className="text-[var(--text-dim)]">&bull;</span>
